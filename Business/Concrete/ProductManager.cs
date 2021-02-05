@@ -12,11 +12,6 @@ namespace Business.Concrete
     {
         IProductDal _productDal;
 
-        public IEnumerable<object> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
         public ProductManager(IProductDal productDal)
         {
             _productDal = productDal;
@@ -24,8 +19,18 @@ namespace Business.Concrete
 
         public List<Product> GetALL()
         {
-            //iş kodları
-            return _productDal.GetAll();
+            throw new NotImplementedException();
+        }
+
+        public List<Product> GetAllByCategoryId(int Id)
+        {
+            return _productDal.GetAll(p => p.CategoryId == Id);
+        }
+
+        public List<Product> GetByUnitPrice(decimal min, decimal max)
+        {
+            
+            return _productDal.GetAll(p=>.UnitPrice>=min && p.UnitPrice<=max);
         }
     }
 

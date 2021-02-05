@@ -8,6 +8,8 @@ namespace Business.Abstract
     public interface IProductService
     {
         List<Product> GetALL();
+        List<Product> GetAllByCategoryId(int Id);
+        List<Product> GetByUnitPrice(decimal min, decimal max);
 
     }
 }

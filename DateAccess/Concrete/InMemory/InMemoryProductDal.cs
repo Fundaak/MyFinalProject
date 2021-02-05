@@ -62,9 +62,10 @@ namespace DateAccess.Concrete.InMemory
             return _products.Where(p => p.CategoryId == categoryId).ToList();
         }
 
-
-
-
+        public List<Product> GetAll(object p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
