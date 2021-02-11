@@ -1,8 +1,10 @@
 ﻿using DateAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DateAccess.Concrete.InMemory
@@ -29,11 +31,13 @@ namespace DateAccess.Concrete.InMemory
 
         public void Delete(Product product)
         {
+            //LINQ - Lnagıage Integrated Query
+            // Lambda
            Product productToDelete = _products.SingleOrDefault(p=>p.ProductId ==product.ProductId);
 
 
 
-            _products.Remove(productToDelete);
+            _products.Remove(product);
         }
             
             
@@ -62,7 +66,17 @@ namespace DateAccess.Concrete.InMemory
             return _products.Where(p => p.CategoryId == categoryId).ToList();
         }
 
-        public List<Product> GetAll(object p)
+        public List<ProductDetailDto> GetProductDetailDtos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product Get(Expression<Func<Product, bool>> filter)
         {
             throw new NotImplementedException();
         }

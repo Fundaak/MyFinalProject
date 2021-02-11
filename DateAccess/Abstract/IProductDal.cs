@@ -1,18 +1,16 @@
-﻿using Entities.Concrete;
+﻿using Core.DateAccess;
+using Entities.Concrete;
+using Entities.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DateAccess.Abstract
 {
-   public interface IProductDal
+   public interface IProductDal :IEnttiyRepositoy<Product>
     {
-        List<Product> GetAll(object p);
-        void Add(Product product);
-        void Update(Product product);
-        void Delete(Product product);
-
-        List<Product> GetAllByCategory(int categoryId);
+        List<ProductDetailDto> GetProductDetails();
 
     }
 }
+//Code Refactoring

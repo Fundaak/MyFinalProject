@@ -1,14 +1,15 @@
-﻿using Entities.Abstract;
+﻿
+using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace DateAccess.Abstract
+namespace Core.DateAccess
 {
     //generic constraint
     //class . referans tip
-    public interface IEnttiyRepositoy<T> where T:class,IEntity, new()
+    public interface IEnttiyRepositoy<T> where T:class, IEntity, new()
     {
         List<T> GetAll(Expression<Func<T,bool>> filter=null);
         T Get(Expression<Func<T, bool>> filter);
@@ -16,6 +17,6 @@ namespace DateAccess.Abstract
         void Update(T entity);
         void Delete(T entity);
 
-        List<T> GetAllByCategory(int categoryId);
+        
     }
 }
