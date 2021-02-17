@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DateAccess.Abstract
 {
-   public interface IProductDal :IEnttiyRepositoy<Product>
+   public interface IProductDal :IEntityRepository<Product>
     {
         List<ProductDetailDto> GetProductDetails();
 

@@ -6,23 +6,23 @@ namespace Core.Utilities.Results
 {
     public class Result : IResult
     {
-      
 
-        public Result(bool success, string message):this(success)
+
+        public Result(bool success, string message) : this(success)
         {
             Message = message;
-           
-        }
-        
-        public Result(bool succes)
-        {
-            Success = succes;
+
         }
 
-        public bool Success { get; }
+        public Result(bool succes)
+        {
+            Succes = succes;
+        }
+        public bool Succes { get; }
+
 
         public string Message { get; }
 
-        public bool Succes => throw new NotImplementedException();
+       
     }
 }

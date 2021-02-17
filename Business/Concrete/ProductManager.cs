@@ -35,15 +35,19 @@ namespace Business.Concrete
             return new Result(true, "Ürün eklendi");
         }
 
-        public IDataResult<List<Product>> GetALL()
+        public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour==22)
+            if (DateTime.Now.Hour == 22)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
-            //İş kodları
-            // Yetkisi var mı?
+           
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(),Messages.ProductsListed);
+        }
+
+        public IDataResult<List<Product>> GetALL()
+        {
+            throw new NotImplementedException();
         }
 
         public IDataResult<List<Product>> GetAllByCategoryId(int Id)

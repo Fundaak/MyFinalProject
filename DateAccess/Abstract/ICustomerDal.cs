@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DateAccess.Abstract
 {
-   public interface ICustomerDal :IEnttiyRepositoy<Customer>
+   public interface ICustomerDal :IEntityRepository<Customer>
     {
 
     }

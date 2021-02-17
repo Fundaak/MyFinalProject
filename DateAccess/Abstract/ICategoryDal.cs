@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DateAccess.Abstract
 {
-   public interface ICategoryDal : IEnttiyRepositoy<Category>
+   public interface ICategoryDal : IEntityRepository<Category>
     {
 
     }
