@@ -1,10 +1,14 @@
 ﻿using Business.Abstract;
 using Business.Constents;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DateAccess.Abstract;
 using DateAccess.Concrete.InMemory;
 using Entities.Concrete;
 using Entities.DTO;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,21 +24,16 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+        [ValidationAspect(typeof(ProductValidator))]
+
         public IResult Add(Product product)
         {
             //Business codes
 
-            if (product.ProductName.Length<2)
-            {
-                //magic strings
-                return new ErrorResult(Messages.ProductAdded);
-            }
             _productDal.Add(product);
 
-
-            return new Result(true, "Ürün eklendi");
+            return new ErrorResult(Messages.ProductAdded);
         }
-
         public IDataResult<List<Product>> GetAll()
         {
             if (DateTime.Now.Hour == 22)
@@ -45,10 +44,6 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(),Messages.ProductsListed);
         }
 
-        public IDataResult<List<Product>> GetALL()
-        {
-            throw new NotImplementedException();
-        }
 
         public IDataResult<List<Product>> GetAllByCategoryId(int Id)
         {
@@ -68,6 +63,11 @@ namespace Business.Concrete
 
         public IDataResult<List<ProductDetailDto>> GetProductDetails()
         {
+
+            if (DateTime.Now.Hour == 23)
+            {
+                return new ErrorDataResult<List<ProductDetailDto>>(Messages.MaintenanceTime);
+            }
             return new SuccessDataResult<List<ProductDetailDto>>( _productDal.GetProductDetails());
         }
     }
